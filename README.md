@@ -73,7 +73,7 @@ The preprocessing pipeline includes:
 
 
 <h2>Model Architecture</h2>
-![Architecture](https://raw.githubusercontent.com/Geetanshu18/Brain-Tumor-Detection/main/Architecture.png)
+![Architecture.png](https://raw.githubusercontent.com/Geetanshu18/Brain-Tumor-Detection/main/Architecture.png)
 
 The model is based on the VGG16 architecture, a pre-trained convolutional neural network (CNN) used for image classification tasks. The architecture has been fine-tuned for the specific task of brain tumor classification.
 
