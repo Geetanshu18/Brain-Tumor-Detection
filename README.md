@@ -1,104 +1,154 @@
-Brain Tumor Classification using Deep Learning
-This repository contains the implementation of a deep learning pipeline to classify brain tumors from MRI images. The dataset is organized and processed using Python, OpenCV, and TensorFlow with Keras, and the models are built using the VGG16 architecture.
-Table of Contents
+<h1>Brain Tumor Classification using Deep Learning</h1>
+
+Developed a deep learning model to classify brain tumors from MRI images into four categories: Glioma, Meningioma, Pituitary, and No Tumor. Leveraged the VGG16 architecture for transfer learning, fine-tuning the model to achieve high accuracy in detecting and classifying brain tumors. Implemented data fetching from MongoDB to train the model, enhancing its performance and reliability.
+
+<h2>Table of Contents</h2>
+
 •	Installation
+
 •	Dataset
+
 •	Data Preprocessing
+
 •	Model Architecture
+
 •	Training and Validation
+
 •	Evaluation
+
 •	Results
+
 •	Usage
+
 •	Acknowledgements
-Installation
+
+<h2>Installation</h2>
 To set up the environment and run the code, follow these steps:
-1.	Clone the repository:
+<h3>1.	Clone the repository:</h3>
 bash
-Copy code
+
 git clone https://github.com/yourusername/brain-tumor-classification.git
+
 cd brain-tumor-classification
-2.	Install the required packages:
+
+<h3>2.	Install the required packages:</h3>
+
 bash
-Copy code
+
 pip install -r requirements.txt
-Alternatively, you can create a Conda environment and install the dependencies:
-bash
-Copy code
-conda create --name brain_tumor_env python=3.8
-conda activate brain_tumor_env
-pip install -r requirements.txt
-3.	Required Python packages:
-o	pymongo
-o	imutils
-o	opencv-python
-o	tensorflow
-o	keras
-o	scikit-learn
-o	matplotlib
-o	plotly
-o	tqdm
-o	PIL
-o	h5py
-Dataset
+
+
+<h2>Dataset</h2>
 The dataset is structured as follows:
+
 •	dataset3/All_images: Contains all images of brain tumors.
+
 •	datasetno/no_tumor: Contains images with no tumor.
+
+
 The images are categorized into four classes:
+
 •	Glioma
+
 •	Meningioma
+
 •	Pituitary
+
 •	No Tumor
+
 The dataset is split into training, validation, and testing sets.
-Data Preprocessing
+<h2>Data Preprocessing</h2>
+
 The preprocessing pipeline includes:
-1.	Reading and Loading Data: Images are loaded from the directories, resized, and stored into arrays.
-2.	Normalization: Images are normalized to a range of 0-255.
-3.	Cropping: Images are cropped to focus on the area of interest using contour detection.
-4.	Data Augmentation: Augmented with transformations such as rotation, flipping, and brightness adjustments.
-5.	Preprocessing for VGG16: Images are preprocessed to match the input requirements of the VGG16 model.
-Model Architecture
+
+<h4>1.	Reading and Loading Data:</h4> Images are loaded from the directories, resized, and stored into arrays.
+
+<h4>2.	Normalization:</h4> Images are normalized to a range of 0-255.
+
+<h4>3.	Cropping:</h4> Images are cropped to focus on the area of interest using contour detection.
+
+<h4>4.	Data Augmentation:</h4> Augmented with transformations such as rotation, flipping, and brightness adjustments.
+
+<h4>5.	Preprocessing for VGG16:</h4> Images are preprocessed to match the input requirements of the VGG16 model.
+
+
+<h2>Model Architecture</h2>
+
 The model is based on the VGG16 architecture, a pre-trained convolutional neural network (CNN) used for image classification tasks. The architecture has been fine-tuned for the specific task of brain tumor classification.
+
 Key components:
-•	Convolutional Layers: Extract features from the images.
-•	Fully Connected Layers: Classify the features into one of the four classes.
-•	Softmax Activation: Used in the output layer for multi-class classification.
-Training and Validation
+
+<h4>•	Convolutional Layers:</h4> Extract features from the images.
+
+<h4>•	Fully Connected Layers:</h4> Classify the features into one of the four classes.
+
+<h4>•	Softmax Activation:</h4> Used in the output layer for multi-class classification.
+
+<h2>Training and Validation</h2>
+
 The training and validation process involves:
-•	Data Generators: Use ImageDataGenerator for on-the-fly data augmentation.
-•	Training: The model is trained using the augmented data.
-•	Validation: Performance is evaluated on a separate validation set to prevent overfitting.
-Callbacks
+
+<h4>•	Data Generators:</h4> Use ImageDataGenerator for on-the-fly data augmentation.
+
+<h4>•	Training:</h4> The model is trained using the augmented data.
+
+<h4>•	Validation:</h4> Performance is evaluated on a separate validation set to prevent overfitting.
+
+</h3>Callbacks</h3>
+
 The code uses an early stopping mechanism to halt training if the validation accuracy does not improve.
-Evaluation
+
+<h2>Evaluation</h2>
+
 The model is evaluated using various metrics such as accuracy, confusion matrix, and more. Visualization of the distribution of the different classes across the datasets (training, validation, testing) is done using Plotly.
-Results
+
+<h2>Results</h2>
 The results include:
-•	Accuracy: Achieved accuracy on the test set.
-•	Confusion Matrix: To visualize the performance of the model in classifying the four different types of images.
-•	Sample Plots: Visualizations of the images and their corresponding predictions.
-Usage
-Running the Code
-1.	Upload Images to MongoDB: If required, you can upload the images to MongoDB using the provided scripts.
-2.	Preprocess and Train the Model:
-o	Preprocess images and organize them into directories for training, validation, and testing.
-o	Train the model using the training set, and validate it using the validation set.
-3.	Evaluate the Model:
-o	After training, evaluate the model using the test set to see how well it generalizes to unseen data.
-4.	Visualize Results:
-o	Visualize the classification results using the provided functions.
-Example Commands
-•	Load and Preprocess Data:
+<h4>•	Accuracy:</h4> Achieved accuracy on the test set.
+
+<h4>•	Confusion Matrix:</h4> To visualize the model's performance in classifying the four types of images.
+
+<h4>•	Sample Plots:</h4> Visualizations of the images and their corresponding predictions.
+
+<h2>Usage</h2>
+
+<h3>Running the Code</h3>
+
+1.	<h4>Upload Images to MongoDB:</h4> If required, you can upload the images to MongoDB using the provided scripts.
+
+2.	<h4>Preprocess and Train the Model:</h4>
+
+    o	Preprocess images and organize them into directories for training, validation, and testing.
+
+    o	Train the model using the training set, and validate it using the validation set.
+
+3.	<h4>Evaluate the Model:</h4>
+
+    o	After training, evaluate the model using the test set to see how well it generalizes to unseen data.
+
+4.	<h4>Visualize Results:</h4>
+
+    o	Visualize the classification results using the provided functions.
+
+<h3>Example Commands</h3>
+<h4>•	Load and Preprocess Data:<h4>
+
 python
-Copy code
+
 X_train, y_train, labels = load_data(TRAIN_DIR, IMG_SIZE)
-•	Train the Model:
+
+<h4>•	Train the Model:</h4>
+
 python
-Copy code
+
 model.fit(train_generator, validation_data=validation_generator, epochs=50)
-•	Evaluate the Model:
+
+<h4>•	Evaluate the Model:</h4>
+
 python
-Copy code
+
 model.evaluate(X_test_prep, y_test)
-Acknowledgements
+
+<h2>Acknowledgements</h2>
 This project is based on the analysis and classification of brain tumor images using deep learning techniques. Special thanks to the open-source community for providing the tools and libraries used in this project.
 
